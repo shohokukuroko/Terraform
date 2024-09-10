@@ -1,3 +1,4 @@
+# Configure the Azure provider
 terraform {
   required_providers {
     azurerm = {
@@ -8,7 +9,10 @@ terraform {
 
   required_version = ">= 1.1.0"
 }
-
 provider "azurerm" {
   features {}
+  client_id       = "clientid"
+  client_secret   = "clientsecret"
+  tenant_id       = "tenantid"
+  subscription_id = "subscriptionid"
 }
