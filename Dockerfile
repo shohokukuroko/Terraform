@@ -5,7 +5,7 @@ FROM python:3.9-slim
 WORKDIR /app
 
 # Copy application code
-COPY app.py /app/
+COPY main.py /app/
 
 # Install dependencies (if any)
 RUN pip install flask
@@ -14,4 +14,4 @@ RUN pip install flask
 EXPOSE 5000
 
 # Start the application
-CMD ["python", "app.py"]
+CMD ["python", "main.py"]

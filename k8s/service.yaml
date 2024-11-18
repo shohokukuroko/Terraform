@@ -8,5 +8,8 @@ spec:
   ports:
     - protocol: TCP
       port: 80
-      targetPort: 5000
-  type: LoadBalancer
+      targetPort: 8080
+    - protocol: TCP
+      port: 443
+      targetPort: 8080
+  type: LoadBalancer  # This exposes the service to a public IP
