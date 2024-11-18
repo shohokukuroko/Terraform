@@ -7,34 +7,34 @@ on:
   pull_request:
 
 jobs:
-  provision-infra:
-    name: Provision Infrastructure with Terraform
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v3
+  # provision-infra:
+  #   name: Provision Infrastructure with Terraform
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout Code
+  #       uses: actions/checkout@v3
 
-      - name: Set up Terraform
-        uses: hashicorp/setup-terraform@v2
-        with:
-          terraform_version: 1.5.0
+  #     - name: Set up Terraform
+  #       uses: hashicorp/setup-terraform@v2
+  #       with:
+  #         terraform_version: 1.5.0
 
-      - name: Initialize Terraform
-        working-directory: terraform
-        run: terraform init
+  #     - name: Initialize Terraform
+  #       working-directory: terraform
+  #       run: terraform init
 
-      - name: Validate Terraform
-        working-directory: terraform
-        run: terraform validate
+  #     - name: Validate Terraform
+  #       working-directory: terraform
+  #       run: terraform validate
 
-      - name: Apply Terraform
-        working-directory: terraform
-        env:
-          ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
-          ARM_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
-          ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-          ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
-        run: terraform apply -auto-approve
+  #     - name: Apply Terraform
+  #       working-directory: terraform
+  #       env:
+  #         ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+  #         ARM_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
+  #         ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+  #         ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+  #       run: terraform apply -auto-approve
 
   build-docker:
     name: Build and Push Docker Image
